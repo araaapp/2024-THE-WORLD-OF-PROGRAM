@@ -46,5 +46,5 @@ if (isset($_GET['id'])) {
         </div>
     <?php endif; ?>
 </div>
-rafdy
+
 <?=template_footer()?>
