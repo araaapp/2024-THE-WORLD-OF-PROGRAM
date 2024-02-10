@@ -28,7 +28,7 @@ function template_header($title) {
         <div>
             <h1>Pemesanan Tiket Kereta Api KAI</h1>
             <a href="index.php"><i class="fas fa-home"></i>Home</a>
-            <a href="read.php"><i class="fas fa-address-book"></i>Contacts</a>
+            <a href="read.php"><i class="fas fa-address-book"></i>Daftar Pelanggan</a>
         </div>
     </nav>
     EOT;
