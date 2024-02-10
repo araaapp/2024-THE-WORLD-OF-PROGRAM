@@ -17,11 +17,11 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $num_bookings = $pdo->query('SELECT COUNT(*) FROM daftar_booking')->fetchColumn();
 ?>
 
-<?=template_header('Read Bookings')?>
+<?=template_header('Pemesanan Tiket')?>
 
 <div class="content read">
     <h2>Read Bookings</h2>
-    <a href="create.php" class="create-booking">Create Booking</a>
+    <a href="create.php" class="create-booking">PESAN TIKET KERETA ANDA DISINI..</a>
     <table>
         <thead>
             <tr>
