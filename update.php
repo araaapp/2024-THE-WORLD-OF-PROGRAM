@@ -21,7 +21,7 @@ if (isset($_GET['id'])) {
 
         $stmt = $pdo->prepare('UPDATE daftar_booking SET id = ?, no_booking = ?, tgl_booking = ?, tgl_keberangkatan = ?, nama_pelanggan = ?, alamat = ?, no_hp = ?, tujuan = ?, kelas = ?, jam_keberangkatan = ?, jam_kedatangan = ?, jumlah_pesan = ?, total_biaya = ? WHERE id = ?');
         $stmt->execute([$id, $no_booking, $tgl_booking, $tgl_keberangkatan, $nama_pelanggan, $alamat, $no_hp, $tujuan, $kelas, $jam_keberangkatan, $jam_kedatangan, $jumlah_pesan, $total_biaya, $_GET['id']]);
-        $msg = 'Updated Successfully!';
+        $msg = 'Pesanan Anda Berhasil di Update!';
     }
 
     $stmt = $pdo->prepare('SELECT * FROM daftar_booking WHERE id = ?');
@@ -44,7 +44,7 @@ function generateRandomString($length = 3) {
 }
 ?>
 
-<?=template_header('Update')?>
+<?=template_header('Update Pemesanan Tiket Kereta Api KAI')?>
 
 <style>
     .content.update form {
@@ -94,20 +94,22 @@ function generateRandomString($length = 3) {
         
         <label for="tujuan">Tujuan</label>
         <select name="tujuan" value="<?=$booking['tujuan']?>" id="tujuan">
-            <option value="Sukabumi - Bogor">Sukabumi - Bogor Rp 75.000/1 penumpang</option>
-            <option value="Sukabumi - Bandung">Sukabumi - Bandung Rp 85.000/1 penumpang</option>
-            <option value="Sukabumi - Jakarta">Sukabumi - Jakarta Rp 85.000/1 penumpang</option>
-            <option value="Bogor - Bandung">Bogor - Bandung Rp 70.000/1 penumpang</option>
-            <option value="Bogor - Jakarta">Bogor - Jakarta Rp 75.000/1 penumpang</option>
-            <option value="Jakarta - Bogor">Jakarta - Bogor Rp 50.000/1 penumpang</option>
-            <option value="Jakarta - Bandung">Jakarta - Bandung Rp 90.000/1 penumpang</option>
+            <option value="Sukabumi - Bogor">1.Sukabumi - Bogor Rp 75.000/1 penumpang</option>
+            <option value="Sukabumi - Bandung">2.Sukabumi - Bandung Rp 85.000/1 penumpang</option>
+            <option value="Sukabumi - Jakarta">3.Sukabumi - Jakarta Rp 85.000/1 penumpang</option>
+            <option value="Bogor - Sukabumi">4.Bogor - Sukabumi Rp 75.000/1 penumpang</option>
+            <option value="Bogor - Bandung">5.Bogor - Bandung Rp 70.000/1 penumpang</option>
+            <option value="Bogor - Jakarta">6.Bogor - Jakarta Rp 75.000/1 penumpang</option>
+            <option value="Jakarta - Bogor">7.Jakarta - Bogor Rp 50.000/1 penumpang</option>
+            <option value="Jakarta - Bandung">8.Jakarta - Bandung Rp 90.000/1 penumpang</option>
+            <option value="Jakarta - Sukabumi">9.Jakarta - Sukabumi Rp 85.000/1 penumpang</option>
         </select>
         
         <label for="kelas">Kelas</label>
         <select name="kelas" value="<?=$booking['kelas']?>" id="kelas">
-            <option value="Ekonomi">Ekonomi</option>
-            <option value="Bisnis">Bisnis</option>
-            <option value="Eksekutif">Eksekutif</option>
+            <option value="Ekonomi">1.Ekonomi</option>
+            <option value="Bisnis">2.Bisnis</option>
+            <option value="Eksekutif">3.Eksekutif</option>
         </select>
         
         <label for="jam_keberangkatan">Jam Keberangkatan</label>
@@ -122,7 +124,7 @@ function generateRandomString($length = 3) {
         <label for="total_biaya">Total Biaya</label>
         <input type="teks" name="total_biaya" value="<?=$booking['total_biaya']?>" id="total_biaya" readonly>
         
-        <input type="submit" value="Buat">
+        <input type="submit" value="Update Pesanan">
     </form>
     <?php if ($msg): ?>
     <p><?=$msg?></p>
@@ -176,6 +178,9 @@ function getHargaDasar(tujuan) {
         case 'Sukabumi - Jakarta':
             hargaDasar = 85000;
             break;
+        case 'Bogor - Sukabumi':
+            hargaDasar = 75000;
+            break;
         case 'Bogor - Bandung':
             hargaDasar = 70000;
             break;
@@ -187,6 +192,9 @@ function getHargaDasar(tujuan) {
             break;
         case 'Jakarta - Bandung':
             hargaDasar = 90000;
+            break;
+        case 'Jakarta - Sukabumi':
+            hargaDasar = 85000;
             break;
         default:
             hargaDasar = 0;
